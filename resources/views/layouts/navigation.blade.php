@@ -29,13 +29,13 @@
                         {{ __('Contact') }}
                     </x-nav-link>
                       <x-nav-link href="about" :active="request()->routeIs('About')">
-                        {{ __('About') }} 
-                    </x-nav-link> 
-                    @role('master|engineer')
+                        {{ __('About') }}
+                    </x-nav-link>
+                    {{-- @role('master|engineer')
                     <x-nav-link href="Admin/index" :active="request()->routeIs('Admin.index')">
                         {{ __('Admin') }}
                     </x-nav-link>
-                    @endrole
+                    @endrole --}}
                 </div>
             </div>
 
@@ -101,22 +101,29 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="dashboard" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Home') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="rent" :active="request()->routeIs('rent')">
-                {{ __('Rooms') }}
+                {{ __('Products') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="blog" :active="request()->routeIs('blog')">
-                {{ __('Blog') }}
+            <x-responsive-nav-link href="services" :active="request()->routeIs('blog')">
+                {{ __('Services') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="gallery" :active="request()->routeIs('blog')">
+                {{ __('Gallery') }}
+            </x-responsive-nav-link>
+
             <x-responsive-nav-link href="contact" :active="request()->routeIs('contact')">
                 {{ __('Contact') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="about" :active="request()->routeIs('About')">
+                {{ __('About') }}
+            </x-responsive-nav-link>
             {{-- @role('master') --}}
 
-            <x-responsive-nav-link href="Admin/index" :active="request()->routeIs('Admin/index')">
+            {{-- <x-responsive-nav-link href="Admin/index" :active="request()->routeIs('Admin/index')">
                 {{ __('Admin') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
             {{-- @endrole --}}
         </div>
         <!-- Responsive Settings Options -->
