@@ -7,14 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $fillable = ['room_id', 'full_name', 'phone', 'check_in', 'check_out', 'adults', 'children', 'time'];
-    protected $casts = [
-      'check_in' => 'date',
-      'check_out' => 'date',
-    ];
-
-      public function room()
+    protected $fillable = ['full_name', 'phone', 'product_id', 'quantity', 'total_price', 'notes', 'status'];
+    public function product()
     {
-        return $this->belongsTo(Room::class);
+        return $this->belongsTo(Product::class);
     }
 }

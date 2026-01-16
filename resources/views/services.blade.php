@@ -85,7 +85,7 @@
     </section>
 
     <!-- Services Navigation -->
-    <section class="sticky top-20 z-40 bg-white shadow-md py-4">
+    <section class="sticky z-40 bg-white shadow-md py-4">
         <div class="container mx-auto px-4">
             <div class="flex overflow-x-auto space-x-6 py-2 hide-scrollbar">
                 <a href="#event-services" class="flex-shrink-0 text-gray-600 hover:text-[#2a6b4e] font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition">
@@ -194,7 +194,7 @@
                             </li>
                         </ul>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-[#2a6b4e]">$1,500-$5,000</span>
+                            <span class="text-2xl font-bold text-[#2a6b4e]">Free</span>
                             <a href="contact.html?service=clear-span" class="btn-primary">
                                 Inquire Now
                             </a>
@@ -1103,14 +1103,14 @@
                                 <i class="fas fa-phone text-xl mr-4"></i>
                                 <div>
                                     <p class="font-bold">Call Us</p>
-                                    <p class="text-gray-100">(555) 123-4567</p>
+                                    <p class="text-gray-100">tel:+254701596171</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-envelope text-xl mr-4"></i>
                                 <div>
                                     <p class="font-bold">Email Us</p>
-                                    <p class="text-gray-100">services@adventurecanvas.com</p>
+                                    <p class="text-gray-100">info@nakurutents.com</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
@@ -1187,7 +1187,7 @@
     </section>
 
     <!-- Trust Indicators -->
-    <section class="py-12 bg-gray-50">
+    {{-- <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
                 <h3 class="text-2xl font-bold text-gray-800 mb-4">Trusted By Industry Leaders</h3>
@@ -1225,7 +1225,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white pt-12 pb-8">

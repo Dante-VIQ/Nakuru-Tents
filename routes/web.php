@@ -7,8 +7,10 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Admin\TestimonialController;
 
@@ -38,6 +40,10 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 
+Route::get('/gallery-single', function () {
+    return view('gallery-single');
+})->name('gallery-single');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
@@ -56,11 +62,14 @@ Route::get('/booknow', function () {
     return view('booknow');
 })->name('booknow');
 
-Route::get('blog/{blog}', ShowBlog::class)->name('blog-single');
+// Route::get('blog/{blog}', ShowBlog::class)->name('blog-single');
 
 // Contact routes
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+// Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+// Route::get('/gallery/{slug}', [GalleryController::class, 'show'])->name('gallery.show');
 
 Route::middleware(['auth', 'role:master|engineer'])->group(function () {
     Route::get('/Admin/user/roles/index', [UserRoleController::class, 'index'])->name('admin.user.roles.index');
@@ -83,6 +92,16 @@ Route::middleware(['auth', 'role:master|engineer'])->group(function () {
     Route::get('/Admin/bookings', function () {
         return view('Admin/bookings');
     })->name('Admin/bookings');
+
+    Route::resource('admin/products', ProductController::class);
+
+    // Status update route
+    Route::post('admin/products/{product}/status', [ProductController::class, 'updateStatus'])->name('products.update-status');
+
+    Route::resource('admin/gallery', GalleryController::class);
+
+    // Status update route
+    Route::post('admin/gallery/{gallery}/status', [GalleryController::class, 'updateStatus'])->name('gallery.update-status');
 });
 
 // Route::middleware('role:master|admin|engineer')->group(function () {

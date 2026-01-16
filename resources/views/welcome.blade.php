@@ -1,5 +1,5 @@
-<x-guest-layout>
+<x-app-layout>
 
     @include('home')
 
-</x-guest-layout>
+</x-app-layout>

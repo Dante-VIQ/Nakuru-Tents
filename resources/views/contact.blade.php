@@ -211,7 +211,7 @@
                     <a href="#location" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
                         <i class="fas fa-map-marker-alt mr-2"></i> Visit Us
                     </a>
-                    <a href="tel:5551234567" class="btn-primary">
+                    <a href="tel:+254701596171" class="btn-primary">
                         <i class="fas fa-phone mr-2"></i> Call Now
                     </a>
                 </div>
@@ -247,13 +247,13 @@
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Call Us</h3>
                     <p class="text-gray-600 mb-4">Speak directly with our team during business hours</p>
                     <div class="space-y-2">
-                        <a href="tel:5551234567" class="text-2xl font-bold text-[#2a6b4e] hover:text-[#3a8b6f] transition block">
-                            (555) 123-4567
+                        <a href="tel:+254701596171" class="text-2xl font-bold text-[#2a6b4e] hover:text-[#3a8b6f] transition block">
+                            +254 701 596171
                         </a>
                         <p class="text-gray-500 text-sm">Mon-Fri: 9AM-6PM EST</p>
                         <p class="text-gray-500 text-sm">Sat: 10AM-4PM EST</p>
                     </div>
-                    <button onclick="callNumber('5551234567')" class="btn-outline mt-6 w-full">
+                    <button onclick="callNumber('+254701596171')" class="btn-outline mt-6 w-full">
                         <i class="fas fa-phone mr-2"></i> Call Now
                     </button>
                 </div>
@@ -656,7 +656,7 @@
     </section>
 
     <!-- Departments -->
-    <section class="py-16 bg-white">
+    {{-- <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12 fade-in">
                 <span class="inline-block px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-semibold mb-4">
@@ -745,11 +745,11 @@
                         </div>
                         <div class="flex items-center text-gray-700">
                             <i class="fas fa-phone text-[#2a6b4e] mr-3"></i>
-                            <span>(555) 123-4003</span>
+                            <span>+254 701 596171</span>
                         </div>
                         <div class="flex items-center text-gray-700">
                             <i class="fas fa-user text-[#2a6b4e] mr-3"></i>
-                            <span>Contact: Michael Chen</span>
+                            <span>Contact: Simon</span>
                         </div>
                     </div>
                     <button onclick="contactEvents()" class="btn-outline w-full">
@@ -758,7 +758,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- CTA Section -->
     <section class="py-16 bg-gradient-to-r from-[#2a6b4e] to-[#3a8b6f] text-white">
@@ -770,7 +770,7 @@
                 </p>
                 
                 <div class="flex flex-wrap justify-center gap-6">
-                    <a href="tel:5551234567" class="btn-secondary">
+                    <a href="tel:+254701596171" class="btn-secondary">
                         <i class="fas fa-phone mr-2"></i> Call Now
                     </a>
                     <button onclick="scheduleCall()" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">

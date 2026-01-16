@@ -2,16 +2,16 @@
 
 namespace App\Livewire;
 
-use App\Models\Room;
+use App\Models\Product;
 use Livewire\Component;
 
 class RoomCard extends Component
 {
-    public $rooms;
+    public $products;
 
     public function mount()
     {
-        $this->rooms = Room::all();
+        $this->products = Product::all();
     }
 
 

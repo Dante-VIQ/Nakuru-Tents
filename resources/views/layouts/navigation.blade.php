@@ -31,11 +31,11 @@
                       <x-nav-link href="about" :active="request()->routeIs('About')">
                         {{ __('About') }}
                     </x-nav-link>
-                    {{-- @role('master|engineer')
+                    @role('master|engineer')
                     <x-nav-link href="Admin/index" :active="request()->routeIs('Admin.index')">
                         {{ __('Admin') }}
                     </x-nav-link>
-                    @endrole --}}
+                    @endrole
                 </div>
             </div>
 
@@ -121,9 +121,9 @@
             </x-responsive-nav-link>
             {{-- @role('master') --}}
 
-            {{-- <x-responsive-nav-link href="Admin/index" :active="request()->routeIs('Admin/index')">
+            <x-responsive-nav-link href="Admin/index" :active="request()->routeIs('Admin/index')">
                 {{ __('Admin') }}
-            </x-responsive-nav-link> --}}
+            </x-responsive-nav-link>
             {{-- @endrole --}}
         </div>
         <!-- Responsive Settings Options -->
