@@ -618,7 +618,7 @@
     </section>
 
     <!-- Meet Our Team -->
-    <section id="team" class="py-16 bg-gray-50">
+    {{-- <section id="team" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12 fade-in">
                 <span class="inline-block px-4 py-2 bg-[#3a8b6f] text-white rounded-full text-sm font-semibold mb-4">
@@ -757,7 +757,7 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Expertise & Skills -->
     <section class="py-16 bg-white">
@@ -1123,7 +1123,7 @@
             </div>
             
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2023 Adventure Canvas Co. All rights reserved.</p>
+                <p class="text-gray-400 text-sm">© 2026 Nakuru Tents & Canvas. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>

@@ -266,13 +266,13 @@
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Email Us</h3>
                     <p class="text-gray-600 mb-4">Send us a message and we'll respond within 24 hours</p>
                     <div class="space-y-2">
-                        <a href="mailto:info@adventurecanvas.com" class="text-lg font-bold text-[#2a6b4e] hover:text-[#3a8b6f] transition block">
-                            info@adventurecanvas.com
+                        <a href="mailto:info@nakurutents.com" class="text-lg font-bold text-[#2a6b4e] hover:text-[#3a8b6f] transition block">
+                            info@nakurutents.com
                         </a>
-                        <a href="mailto:sales@adventurecanvas.com" class="text-lg font-bold text-[#2a6b4e] hover:text-[#3a8b6f] transition block">
-                            sales@adventurecanvas.com
+                        <a href="mailto:sales@nakuruents.com" class="text-lg font-bold text-[#2a6b4e] hover:text-[#3a8b6f] transition block">
+                            sales@nakurutents.com
                         </a>
-                        <p class="text-gray-500 text-sm">Support: support@adventurecanvas.com</p>
+                        <p class="text-gray-500 text-sm">Support: sales@nakurutents.com</p>
                     </div>
                     <button onclick="emailUs()" class="btn-primary mt-6 w-full">
                         <i class="fas fa-envelope mr-2"></i> Send Email
@@ -287,9 +287,9 @@
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Visit Us</h3>
                     <p class="text-gray-600 mb-4">Come see our showroom and meet our team</p>
                     <div class="space-y-2">
-                        <p class="text-gray-800 font-medium">123 Adventure Street</p>
-                        <p class="text-gray-800">Outdoor City, OC 12345</p>
-                        <p class="text-gray-800">United States</p>
+                        <p class="text-gray-800 font-medium">Free Area, Lanet</p>
+                        <p class="text-gray-800">20100, Nakuru City</p>
+                        <p class="text-gray-800">Kenya</p>
                         <p class="text-gray-500 text-sm">Showroom Hours: Mon-Sat 10AM-6PM</p>
                     </div>
                     <button onclick="getDirections()" class="btn-outline mt-6 w-full">
@@ -385,7 +385,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800 mb-1">Address</h4>
-                                    <p class="text-gray-600">123 Adventure Street<br>Outdoor City, OC 12345<br>United States</p>
+                                    <p class="text-gray-600">Free Area, Lanet<br>Nakuru City, 20100<br>Kenya</p>
                                 </div>
                             </div>
                             
@@ -839,15 +839,15 @@
                     <ul class="space-y-3">
                         <li class="flex items-center text-gray-400">
                             <i class="fas fa-map-marker-alt mr-3"></i>
-                            <span>123 Adventure St, Outdoor City, OC 12345</span>
+                            <span>Free Area, Nakuru City, 20100</span>
                         </li>
                         <li class="flex items-center text-gray-400">
                             <i class="fas fa-phone mr-3"></i>
-                            <span>(555) 123-4567</span>
+                            <span>+254 701 596171</span>
                         </li>
                         <li class="flex items-center text-gray-400">
                             <i class="fas fa-envelope mr-3"></i>
-                            <span>info@adventurecanvas.com</span>
+                            <span>info@nakurutents.com</span>
                         </li>
                     </ul>
                 </div>
@@ -867,7 +867,7 @@
             </div>
             
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2023 Adventure Canvas Co. All rights reserved.</p>
+                <p class="text-gray-400 text-sm">© 2026 Nakuru Tents & Canvas. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
@@ -888,8 +888,8 @@
         let currentLayer = 'streets';
         
         // Business Coordinates (Example: Denver, Colorado)
-        const businessLat = 39.7392;
-        const businessLng = -104.9903;
+        const businessLat = -0.293883;
+        const businessLng = 36.117146;
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {

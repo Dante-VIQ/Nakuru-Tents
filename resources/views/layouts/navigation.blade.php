@@ -4,13 +4,22 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center space-x-3">
+                {{-- <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                         <i class="fas fa-mountain-sun text-white text-xl"></i>
                     </div>
-                    <a href="#" class="text-2xl font-bold text-primary">Nakuru Tents & Canvas</a>
+                    <a href="#" class="text-2xl font-bold text-primary"></a>
+                </div> --}}
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-700 text-white w-12 h-12 rounded-lg flex items-center justify-center">
+                        {{-- <img src="{{ asset('images/ride-logo.PNG') }}" alt="Logo" class="block h-12 w-auto" /> --}}
+                        <i class="fas fa-mountain-sun text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-heading text-2xl font-bold text-teal-900">Nakuru Tents & Canvas</h1>
+                        <p class="text-sm text-gray-600">Professional Outdoor Adventures</p>
+                    </div>
                 </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
