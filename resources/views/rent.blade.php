@@ -1,3 +1,3 @@
 <div>
-    @include('admin.rooms.index')
+    @include('Admin.rooms.index')
 </div>
