@@ -100,9 +100,9 @@
                 <a href="#event-organization" class="flex-shrink-0 text-gray-600 hover:text-[#2a6b4e] font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition">
                     <i class="fas fa-calendar-alt mr-2"></i> Event Planning
                 </a>
-                <a href="#pricing" class="flex-shrink-0 text-gray-600 hover:text-[#2a6b4e] font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition">
+                {{-- <a href="#pricing" class="flex-shrink-0 text-gray-600 hover:text-[#2a6b4e] font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition">
                     <i class="fas fa-tags mr-2"></i> Pricing
-                </a>
+                </a> --}}
                 <a href="#faq" class="flex-shrink-0 text-gray-600 hover:text-[#2a6b4e] font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition">
                     <i class="fas fa-question-circle mr-2"></i> FAQ
                 </a>
@@ -153,12 +153,12 @@
                                 <span>Flooring options available</span>
                             </li>
                         </ul>
-                        <div class="flex justify-between items-center">
+                        {{-- <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-[#2a6b4e]">$800-$2,500</span>
                             <a href="contact.html?service=marquee" class="btn-primary">
                                 Inquire Now
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -193,12 +193,12 @@
                                 <span>Custom branding available</span>
                             </li>
                         </ul>
-                        <div class="flex justify-between items-center">
+                        {{-- <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-[#2a6b4e]">Free</span>
                             <a href="contact.html?service=clear-span" class="btn-primary">
                                 Inquire Now
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -233,12 +233,12 @@
                                 <span>Rental & purchase options</span>
                             </li>
                         </ul>
-                        <div class="flex justify-between items-center">
+                        {{-- <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-[#2a6b4e]">$25-$100/day</span>
                             <a href="contact.html?service=camping" class="btn-primary">
                                 Inquire Now
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -302,22 +302,22 @@
                     <div class="space-y-2">
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">2-person tent</span>
-                            <span class="font-semibold text-[#2a6b4e]">$25/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 2500/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">4-person tent</span>
-                            <span class="font-semibold text-[#2a6b4e]">$40/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 4000/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Family tent (6-person)</span>
-                            <span class="font-semibold text-[#2a6b4e]">$60/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 5000/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Dome tent (2-person)</span>
-                            <span class="font-semibold text-[#2a6b4e]">$30/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 3000/day</span>
                         </div>
                     </div>
-                    <a href="products.html?category=tents" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
+                    <a href="rent?category=tents" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
                         View All Tents <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -332,22 +332,22 @@
                     <div class="space-y-2">
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Day backpack</span>
-                            <span class="font-semibold text-[#2a6b4e]">$15/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 1500/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Trekking poles</span>
-                            <span class="font-semibold text-[#2a6b4e]">$10/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 1000/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Hydration pack</span>
-                            <span class="font-semibold text-[#2a6b4e]">$12/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 1200/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Headlamp</span>
-                            <span class="font-semibold text-[#2a6b4e]">$8/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 500/day</span>
                         </div>
                     </div>
-                    <a href="products.html?category=hiking" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
+                    <a href="rent?category=hiking" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
                         View All Gear <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -362,19 +362,19 @@
                     <div class="space-y-2">
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Sleeping bag</span>
-                            <span class="font-semibold text-[#2a6b4e]">$20/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 1000/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Sleeping pad</span>
-                            <span class="font-semibold text-[#2a6b4e]">$12/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 1200/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Camp pillow</span>
-                            <span class="font-semibold text-[#2a6b4e]">$5/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh 200/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Cot</span>
-                            <span class="font-semibold text-[#2a6b4e]">$25/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 2500/day</span>
                         </div>
                     </div>
                     <a href="products.html?category=sleeping" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
@@ -392,22 +392,22 @@
                     <div class="space-y-2">
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Camp stove</span>
-                            <span class="font-semibold text-[#2a6b4e]">$18/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh 180/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Cookware set</span>
-                            <span class="font-semibold text-[#2a6b4e]">$15/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 400/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Cooler</span>
-                            <span class="font-semibold text-[#2a6b4e]">$20/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 800/day</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-700">Water filter</span>
-                            <span class="font-semibold text-[#2a6b4e]">$10/day</span>
+                            <span class="font-semibold text-[#2a6b4e]">Ksh. 700/day</span>
                         </div>
                     </div>
-                    <a href="products.html?category=cooking" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
+                    <a href="rent?category=cooking" class="inline-block mt-4 text-[#2a6b4e] font-semibold text-sm hover:underline">
                         View Cooking Gear <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -425,7 +425,7 @@
                                     3-Day Weekend
                                 </div>
                                 <h4 class="text-xl font-bold text-gray-800">Weekend Warrior</h4>
-                                <div class="text-3xl font-bold text-[#2a6b4e] mt-2">$120</div>
+                                <div class="text-3xl font-bold text-[#2a6b4e] mt-2">Ksh. 20, 000</div>
                                 <p class="text-gray-500 text-sm">per person</p>
                             </div>
                             <ul class="space-y-3 mb-6">
@@ -467,7 +467,7 @@
                                     7-Day Adventure
                                 </div>
                                 <h4 class="text-xl font-bold text-gray-800">Ultimate Adventure</h4>
-                                <div class="text-3xl font-bold text-[#2a6b4e] mt-2">$250</div>
+                                <div class="text-3xl font-bold text-[#2a6b4e] mt-2">Ksh. 25000</div>
                                 <p class="text-gray-500 text-sm">per person</p>
                             </div>
                             <ul class="space-y-3 mb-6">
@@ -510,7 +510,7 @@
                                     1-Day Trip
                                 </div>
                                 <h4 class="text-xl font-bold text-gray-800">Day Hiker</h4>
-                                <div class="text-3xl font-bold text-[#2a6b4e] mt-2">$45</div>
+                                <div class="text-3xl font-bold text-[#2a6b4e] mt-2">Ksh. 4500</div>
                                 <p class="text-gray-500 text-sm">per person</p>
                             </div>
                             <ul class="space-y-3 mb-6">
@@ -609,28 +609,28 @@
                             <i class="fas fa-shopping-bag text-[#2a6b4e] text-2xl"></i>
                         </div>
                         <h4 class="font-bold text-gray-800">Canvas Tote Bags</h4>
-                        <p class="text-gray-600 text-sm mt-1">Starting at $35</p>
+                        <p class="text-gray-600 text-sm mt-1">Starting at Ksh. 3500</p>
                     </div>
                     <div class="bg-gray-50 rounded-xl p-4 text-center card-hover">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
                             <i class="fas fa-briefcase text-[#2a6b4e] text-2xl"></i>
                         </div>
                         <h4 class="font-bold text-gray-800">Laptop Cases</h4>
-                        <p class="text-gray-600 text-sm mt-1">Starting at $65</p>
+                        <p class="text-gray-600 text-sm mt-1">Starting at Ksh. 2500</p>
                     </div>
                     <div class="bg-gray-50 rounded-xl p-4 text-center card-hover">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
                             <i class="fas fa-tshirt text-[#2a6b4e] text-2xl"></i>
                         </div>
                         <h4 class="font-bold text-gray-800">Aprons & Smocks</h4>
-                        <p class="text-gray-600 text-sm mt-1">Starting at $45</p>
+                        <p class="text-gray-600 text-sm mt-1">Starting at Ksh. 1500</p>
                     </div>
                     <div class="bg-gray-50 rounded-xl p-4 text-center card-hover">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
                             <i class="fas fa-tarp text-[#2a6b4e] text-2xl"></i>
                         </div>
                         <h4 class="font-bold text-gray-800">Custom Tarps</h4>
-                        <p class="text-gray-600 text-sm mt-1">Starting at $120</p>
+                        <p class="text-gray-600 text-sm mt-1">Starting at Ksh. 12000</p>
                     </div>
                 </div>
             </div>
@@ -826,7 +826,7 @@
                         <div class="text-center mb-6">
                             <h3 class="text-2xl font-bold text-gray-800 mb-2">Basic Rental</h3>
                             <div class="flex items-baseline justify-center">
-                                <span class="text-4xl font-bold text-[#2a6b4e]">$500</span>
+                                <span class="text-4xl font-bold text-[#2a6b4e]">Ksh. 50000</span>
                                 <span class="text-gray-500 ml-2">/event</span>
                             </div>
                             <p class="text-gray-600 mt-2">Perfect for small gatherings and simple setups</p>
@@ -875,7 +875,7 @@
                         <div class="text-center mb-6">
                             <h3 class="text-2xl font-bold text-gray-800 mb-2">Professional Package</h3>
                             <div class="flex items-baseline justify-center">
-                                <span class="text-4xl font-bold text-[#2a6b4e]">$1,200</span>
+                                <span class="text-4xl font-bold text-[#2a6b4e]">Ksh. 120,000</span>
                                 <span class="text-gray-500 ml-2">/event</span>
                             </div>
                             <p class="text-gray-600 mt-2">Complete solution for most events</p>
@@ -1103,7 +1103,7 @@
                                 <i class="fas fa-phone text-xl mr-4"></i>
                                 <div>
                                     <p class="font-bold">Call Us</p>
-                                    <p class="text-gray-100">tel:+254701596171</p>
+                                    <p class="text-gray-100">+254 701596171</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
@@ -1284,7 +1284,7 @@
             </div>
             
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2023 Adventure Canvas Co. All rights reserved.</p>
+                <p class="text-gray-400 text-sm">© 2026 Nakuru Tents $ Canvas. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>

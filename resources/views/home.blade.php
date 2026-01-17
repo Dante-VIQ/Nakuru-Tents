@@ -56,7 +56,7 @@
 
                     <!-- Floating Elements -->
                     <div class="absolute -top-6 -right-6 bg-secondary text-primary p-6 rounded-2xl shadow-xl">
-                        <div class="text-3xl font-bold">30% Off</div>
+                        <div class="text-3xl font-bold">20% Off</div>
                         <div class="text-sm">First Event Booking</div>
                     </div>
 
@@ -143,7 +143,7 @@
                         <span>Essential Camping Equipment</span>
                     </div>
                 </div>
-                <a href="#products" class="btn-primary mt-8 inline-block">View Products</a>
+                <a href="/rent" class="btn-primary mt-8 inline-block">View Products</a>
             </div>
 
             <!-- Service 3 -->
@@ -306,7 +306,7 @@
                                 </div>
                                 <div>
                                     <div class="font-bold">Call Us</div>
-                                    <div>(555) 123-4567</div>
+                                    <div>+254 701 596171</div>
                                     <div class="text-sm opacity-80">Mon-Fri, 9AM-6PM EST</div>
                                 </div>
                             </div>
@@ -328,8 +328,8 @@
                                 </div>
                                 <div>
                                     <div class="font-bold">Visit Our Showroom</div>
-                                    <div>123 Adventure Street</div>
-                                    <div>Outdoor City, OC 12345</div>
+                                    <div>Free Area, Lanet</div>
+                                    <div>Nakuru City, Kenya</div>
                                 </div>
                             </div>
                         </div>
