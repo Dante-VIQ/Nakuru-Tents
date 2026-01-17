@@ -16,7 +16,7 @@
                         <i class="fas fa-mountain-sun text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="font-heading text-2xl font-bold text-teal-900">Nakuru Tents & Canvas</h1>
+                        <h1 class="font-heading lg:text-2xl text-lg font-bold text-teal-900">Nakuru Tents & Canvas</h1>
                         <p class="text-sm text-gray-600">Professional Outdoor Adventures</p>
                     </div>
                 </div>
