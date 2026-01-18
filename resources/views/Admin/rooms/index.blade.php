@@ -63,6 +63,8 @@
                 transform: translateY(0);
             }
         }
+
+        @livewireStyles < !-- Scripts -->@vite(['resources/css/app.css', 'resources/js/app.js'])
     </style>
 </head>
 
@@ -212,6 +214,7 @@
         </div>
     </div>
 
+    @livewireScripts
     <script>
         // Toast Notification Function
         function showToast(message) {

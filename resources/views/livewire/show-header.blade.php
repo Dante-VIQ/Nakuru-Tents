@@ -11,7 +11,7 @@
                             <div class="relative w-full h-full">
                                 <img src="{{ $image['url'] }}" 
                                      alt="{{ $image['title'] }}"
-                                     class="w-full h-full object-cover">
+                                     class="w-full h-full object-cover bg-no-repeat">
                                 
                                 <!-- Dark Overlay -->
                                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -87,95 +87,10 @@
             </div>
         </div>
     </div>
+
+    <div class="relative z-10 hidden">
+        <!-- Main content goes here -->
+    </div>
 </div>
 
-@push('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<style>
-    .hero-slider {
-        width: 100%;
-        height: 100vh;
-    }
-    
-    .swiper-slide {
-        background-position: center;
-        background-size: cover;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        background: rgba(0, 0, 0, 0.5);
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        backdrop-filter: blur(10px);
-    }
-    
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 24px;
-        color: white;
-    }
-    
-    .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        background: white;
-        opacity: 0.5;
-    }
-    
-    .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: #3B82F6;
-    }
-</style>
-@endpush
 
-@push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const heroSwiper = new Swiper('.hero-slider', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: {{ !empty($heroImages) && count($heroImages) > 1 ? 'true' : 'false' }},
-            speed: 1000,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            
-            // Navigation arrows
-            navigation: {{ !empty($heroImages) && count($heroImages) > 1 ? `{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            }` : 'false' }},
-            
-            // Pagination
-            pagination: {{ !empty($heroImages) && count($heroImages) > 1 ? `{
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            }` : 'false' }},
-            
-            // Only enable autoplay if we have multiple images
-            {{ empty($heroImages) || count($heroImages) <= 1 ? 'autoplay: false,' : '' }}
-        });
-        
-        // Pause autoplay on hover (only if we have autoplay)
-        @if(!empty($heroImages) && count($heroImages) > 1)
-            heroSwiper.el.addEventListener('mouseenter', function() {
-                heroSwiper.autoplay.stop();
-            });
-            
-            heroSwiper.el.addEventListener('mouseleave', function() {
-                heroSwiper.autoplay.start();
-            });
-        @endif
-    });
-</script>
-@endpush

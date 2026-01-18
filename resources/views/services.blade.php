@@ -1,56 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Adventure Canvas Co.</title>
-    <meta name="description" content="Complete event tent solutions, hiking gear rentals, custom canvas products, and professional event organization services.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Alpine.js for interactivity -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <style>
-        :root {
-            --primary: #2a6b4e;
-            --secondary: #e6b325;
-            --accent: #3a8b6f;
-        }
-        
-        .btn-primary {
-            @apply bg-[#2a6b4e] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#3a8b6f] hover:shadow-lg;
-        }
-        
-        .btn-secondary {
-            @apply bg-[#e6b325] text-gray-800 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#f0c040] hover:shadow-lg;
-        }
-        
-        .card-hover {
-            @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Hide scrollbar but keep functionality */
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
-</head>
-<body class="bg-gray-50 font-sans">
+<x-app-layout>
     <!-- Header -->
 @include('layouts.navigation')
 
@@ -60,7 +8,7 @@
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070'); background-size: cover; background-position: center;"></div>
         </div>
-        
+
         <div class="container mx-auto px-4 relative">
             <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -560,10 +508,10 @@
                 <div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-6">Tailored to Your Needs</h3>
                     <p class="text-gray-600 mb-6">
-                        Our expert craftsmen create durable, high-quality canvas products customized to your specifications. 
+                        Our expert craftsmen create durable, high-quality canvas products customized to your specifications.
                         From branded merchandise to specialized outdoor gear, we bring your vision to life with attention to detail and premium materials.
                     </p>
-                    
+
                     <div class="space-y-6">
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
@@ -576,7 +524,7 @@
                                 <p class="text-gray-600">We work with your logos, colors, and designs to create branded products that represent your business.</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-[#2a6b4e] rounded-lg flex items-center justify-center">
@@ -588,7 +536,7 @@
                                 <p class="text-gray-600">Custom dimensions and specifications to meet your exact requirements and use cases.</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-[#2a6b4e] rounded-lg flex items-center justify-center">
@@ -602,7 +550,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-gray-50 rounded-xl p-4 text-center card-hover">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
@@ -641,7 +589,7 @@
                 <div class="grid md:grid-cols-4 gap-8 relative">
                     <!-- Connecting Line -->
                     <div class="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-[#2a6b4e] opacity-20"></div>
-                    
+
                     <div class="relative text-center">
                         <div class="w-16 h-16 bg-[#2a6b4e] rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
                             <span class="text-white font-bold text-xl">1</span>
@@ -649,7 +597,7 @@
                         <h4 class="font-bold text-gray-800 mb-2">Consultation</h4>
                         <p class="text-gray-600 text-sm">We discuss your needs, design ideas, and requirements</p>
                     </div>
-                    
+
                     <div class="relative text-center">
                         <div class="w-16 h-16 bg-[#2a6b4e] rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
                             <span class="text-white font-bold text-xl">2</span>
@@ -657,7 +605,7 @@
                         <h4 class="font-bold text-gray-800 mb-2">Design & Quote</h4>
                         <p class="text-gray-600 text-sm">We create designs and provide a detailed quote</p>
                     </div>
-                    
+
                     <div class="relative text-center">
                         <div class="w-16 h-16 bg-[#2a6b4e] rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
                             <span class="text-white font-bold text-xl">3</span>
@@ -665,7 +613,7 @@
                         <h4 class="font-bold text-gray-800 mb-2">Production</h4>
                         <p class="text-gray-600 text-sm">Our craftsmen create your custom product</p>
                     </div>
-                    
+
                     <div class="relative text-center">
                         <div class="w-16 h-16 bg-[#2a6b4e] rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
                             <span class="text-white font-bold text-xl">4</span>
@@ -693,10 +641,10 @@
                 <div>
                     <h3 class="text-2xl font-bold mb-6">End-to-End Event Management</h3>
                     <p class="text-gray-100 mb-6">
-                        Our experienced event planners handle every detail, ensuring your event runs smoothly from start to finish. 
+                        Our experienced event planners handle every detail, ensuring your event runs smoothly from start to finish.
                         We coordinate with vendors, manage logistics, and provide on-site support so you can focus on enjoying your event.
                     </p>
-                    
+
                     <div class="space-y-4 mb-8">
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
@@ -709,7 +657,7 @@
                                 <p class="text-gray-100 text-sm">Detailed timelines, budget management, and vendor coordination</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
@@ -721,7 +669,7 @@
                                 <p class="text-gray-100 text-sm">Equipment delivery, setup, teardown, and transportation</p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
                                 <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
@@ -734,7 +682,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="flex flex-wrap gap-4">
                         <a href="#contact-form" class="btn-secondary">
                             <i class="fas fa-calendar-check mr-2"></i> Book Planning Session
@@ -744,7 +692,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8">
                     <h4 class="text-xl font-bold mb-6">Event Types We Specialize In</h4>
                     <div class="grid grid-cols-2 gap-4">
@@ -781,7 +729,7 @@
                             <h5 class="font-bold">Seasonal Events</h5>
                         </div>
                     </div>
-                    
+
                     <div class="mt-8 p-4 bg-white bg-opacity-5 rounded-xl">
                         <h5 class="font-bold mb-2">Typical Planning Timeline</h5>
                         <div class="space-y-3">
@@ -831,7 +779,7 @@
                             </div>
                             <p class="text-gray-600 mt-2">Perfect for small gatherings and simple setups</p>
                         </div>
-                        
+
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-center">
                                 <i class="fas fa-check text-green-500 mr-3"></i>
@@ -858,19 +806,19 @@
                                 <span class="text-gray-400">No event coordination</span>
                             </li>
                         </ul>
-                        
+
                         <a href="contact.html?plan=basic" class="btn-secondary w-full text-center">
                             Get Basic Quote
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Professional Plan -->
                 <div class="border-2 border-[#2a6b4e] rounded-2xl overflow-hidden bg-white shadow-xl card-hover">
                     <div class="bg-[#2a6b4e] text-white text-center py-3">
                         <span class="font-bold">MOST POPULAR</span>
                     </div>
-                    
+
                     <div class="p-8">
                         <div class="text-center mb-6">
                             <h3 class="text-2xl font-bold text-gray-800 mb-2">Professional Package</h3>
@@ -880,7 +828,7 @@
                             </div>
                             <p class="text-gray-600 mt-2">Complete solution for most events</p>
                         </div>
-                        
+
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-center">
                                 <i class="fas fa-check text-green-500 mr-3"></i>
@@ -907,13 +855,13 @@
                                 <span class="text-gray-800">Basic event coordination</span>
                             </li>
                         </ul>
-                        
+
                         <a href="contact.html?plan=professional" class="btn-primary w-full text-center">
                             Get Professional Quote
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Premium Plan -->
                 <div class="border border-gray-200 rounded-2xl overflow-hidden bg-white card-hover">
                     <div class="p-8">
@@ -924,7 +872,7 @@
                             </div>
                             <p class="text-gray-600 mt-2">Full-service planning for large/complex events</p>
                         </div>
-                        
+
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-center">
                                 <i class="fas fa-check text-green-500 mr-3"></i>
@@ -951,7 +899,7 @@
                                 <span class="text-gray-800">Complete event coordination</span>
                             </li>
                         </ul>
-                        
+
                         <a href="contact.html?plan=premium" class="btn-secondary w-full text-center">
                             Request Custom Quote
                         </a>
@@ -982,7 +930,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="text-center">
                     <button onclick="calculateEstimate()" class="btn-primary px-8">
                         <i class="fas fa-calculator mr-2"></i> Calculate Estimate
@@ -1011,10 +959,10 @@
                 <div class="space-y-4" x-data="{ open: null }">
                     <!-- FAQ 1 -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <button @click="open = open === 1 ? null : 1" 
+                        <button @click="open = open === 1 ? null : 1"
                                 class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
                             <span class="font-semibold text-gray-800">How far in advance should I book event tents?</span>
-                            <i :class="open === 1 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" 
+                            <i :class="open === 1 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
                                class="text-[#2a6b4e]"></i>
                         </button>
                         <div x-show="open === 1" x-collapse class="px-6 pb-4">
@@ -1027,10 +975,10 @@
 
                     <!-- FAQ 2 -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <button @click="open = open === 2 ? null : 2" 
+                        <button @click="open = open === 2 ? null : 2"
                                 class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
                             <span class="font-semibold text-gray-800">What is included in your gear rental packages?</span>
-                            <i :class="open === 2 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" 
+                            <i :class="open === 2 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
                                class="text-[#2a6b4e]"></i>
                         </button>
                         <div x-show="open === 2" x-collapse class="px-6 pb-4">
@@ -1040,10 +988,10 @@
 
                     <!-- FAQ 3 -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <button @click="open = open === 3 ? null : 3" 
+                        <button @click="open = open === 3 ? null : 3"
                                 class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
                             <span class="font-semibold text-gray-800">Do you provide setup and teardown services?</span>
-                            <i :class="open === 3 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" 
+                            <i :class="open === 3 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
                                class="text-[#2a6b4e]"></i>
                         </button>
                         <div x-show="open === 3" x-collapse class="px-6 pb-4">
@@ -1053,10 +1001,10 @@
 
                     <!-- FAQ 4 -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <button @click="open = open === 4 ? null : 4" 
+                        <button @click="open = open === 4 ? null : 4"
                                 class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
                             <span class="font-semibold text-gray-800">What is your cancellation policy?</span>
-                            <i :class="open === 4 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" 
+                            <i :class="open === 4 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
                                class="text-[#2a6b4e]"></i>
                         </button>
                         <div x-show="open === 4" x-collapse class="px-6 pb-4">
@@ -1066,10 +1014,10 @@
 
                     <!-- FAQ 5 -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <button @click="open = open === 5 ? null : 5" 
+                        <button @click="open = open === 5 ? null : 5"
                                 class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
                             <span class="font-semibold text-gray-800">How long does custom product creation take?</span>
-                            <i :class="open === 5 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" 
+                            <i :class="open === 5 ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"
                                class="text-[#2a6b4e]"></i>
                         </button>
                         <div x-show="open === 5" x-collapse class="px-6 pb-4">
@@ -1077,7 +1025,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="text-center mt-12">
                     <p class="text-gray-600 mb-4">Still have questions?</p>
                     <a href="#contact-form" class="btn-primary px-8">
@@ -1122,37 +1070,37 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bg-white p-8">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">Service Inquiry Form</h3>
                         <form id="serviceInquiryForm" class="space-y-6">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-gray-700 mb-2">Full Name *</label>
-                                    <input type="text" name="name" required 
+                                    <input type="text" name="name" required
                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent"
                                            placeholder="John Smith">
                                 </div>
-                                
+
                                 <div>
                                     <label class="block text-gray-700 mb-2">Email Address *</label>
-                                    <input type="email" name="email" required 
+                                    <input type="email" name="email" required
                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent"
                                            placeholder="john@example.com">
                                 </div>
                             </div>
-                            
+
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-gray-700 mb-2">Phone Number *</label>
-                                    <input type="tel" name="phone" required 
+                                    <input type="tel" name="phone" required
                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent"
                                            placeholder="(555) 123-4567">
                                 </div>
-                                
+
                                 <div>
                                     <label class="block text-gray-700 mb-2">Service Needed *</label>
-                                    <select name="service" required 
+                                    <select name="service" required
                                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent">
                                         <option value="">Select a service</option>
                                         <option value="event-tents">Event Tents & Structures</option>
@@ -1164,18 +1112,18 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <label class="block text-gray-700 mb-2">Project Details *</label>
                                 <textarea name="message" rows="4" required
                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent"
                                           placeholder="Tell us about your project requirements, timeline, and any specific needs..."></textarea>
                             </div>
-                            
+
                             <button type="submit" class="btn-primary w-full flex items-center justify-center py-4 text-lg">
                                 <i class="fas fa-paper-plane mr-2"></i> Submit Inquiry
                             </button>
-                            
+
                             <p class="text-gray-500 text-sm text-center">
                                 We respect your privacy. Your information will only be used to contact you about your inquiry.
                             </p>
@@ -1246,7 +1194,7 @@
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-6">Quick Links</h4>
                     <ul class="space-y-3">
@@ -1257,7 +1205,7 @@
                         <li><a href="blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-6">Services</h4>
                     <ul class="space-y-3">
@@ -1268,12 +1216,12 @@
                         <li><a href="#contact-form" class="text-gray-400 hover:text-white">Get a Quote</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-6">Newsletter</h4>
                     <p class="text-gray-400 mb-4">Subscribe for outdoor tips and exclusive offers</p>
                     <form class="flex mb-4">
-                        <input type="email" placeholder="Your email" 
+                        <input type="email" placeholder="Your email"
                                class="flex-grow px-4 py-2 rounded-l-lg text-gray-800">
                         <button type="submit" class="bg-[#2a6b4e] px-4 rounded-r-lg">
                             <i class="fas fa-paper-plane"></i>
@@ -1282,7 +1230,7 @@
                     <p class="text-sm text-gray-500">We respect your privacy. Unsubscribe anytime.</p>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm">© 2026 Nakuru Tents $ Canvas. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
@@ -1304,12 +1252,12 @@
                 <input type="hidden" id="selectedPackage" name="package">
                 <div>
                     <label class="block text-gray-700 mb-2">Start Date *</label>
-                    <input type="date" name="start_date" required 
+                    <input type="date" name="start_date" required
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent">
                 </div>
                 <div>
                     <label class="block text-gray-700 mb-2">Number of People *</label>
-                    <input type="number" name="people" min="1" required 
+                    <input type="number" name="people" min="1" required
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent">
                 </div>
                 <button type="submit" class="btn-primary w-full">
@@ -1334,6 +1282,7 @@
         </div>
     </div>
 
+    @livewireScripts
     <script>
         // Mobile menu toggle
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
@@ -1354,7 +1303,7 @@
         function calculateEstimate() {
             const serviceType = document.getElementById('serviceType').value;
             const duration = parseInt(document.getElementById('duration').value);
-            
+
             let basePrice = 0;
             switch(serviceType) {
                 case 'event-tent': basePrice = 500; break;
@@ -1362,25 +1311,25 @@
                 case 'event-planning': basePrice = 1000; break;
                 case 'custom-product': basePrice = 300; break;
             }
-            
+
             let multiplier = 1;
             if (duration > 1) multiplier = duration * 0.8; // 20% discount for multi-day
-            
+
             const estimatedCost = basePrice * multiplier;
-            
+
             document.getElementById('estimatedCost').textContent = '$' + Math.round(estimatedCost).toLocaleString();
             document.getElementById('estimateResult').classList.remove('hidden');
         }
 
         // Booking modal functions
         let currentPackage = '';
-        
+
         function openBookingModal(packageId) {
             currentPackage = packageId;
             const modal = document.getElementById('bookingModal');
             const packageName = document.getElementById('modalPackageName');
             const packageInput = document.getElementById('selectedPackage');
-            
+
             // Set package details based on ID
             let name = '';
             switch(packageId) {
@@ -1394,16 +1343,16 @@
                     name = 'Day Hiker Package (1 day)';
                     break;
             }
-            
+
             packageName.textContent = name;
             packageInput.value = packageId;
             modal.classList.remove('hidden');
         }
-        
+
         function closeBookingModal() {
             document.getElementById('bookingModal').classList.add('hidden');
         }
-        
+
         function closeSuccessModal() {
             document.getElementById('successModal').classList.add('hidden');
         }
@@ -1451,5 +1400,4 @@
         const today = new Date().toISOString().split('T')[0];
         document.querySelector('input[type="date"]').min = today;
     </script>
-</body>
-</html>
+</x-app-layout>

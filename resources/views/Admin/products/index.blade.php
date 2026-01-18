@@ -1,304 +1,177 @@
 <x-admin-layout>
-    <div class="container-fluid">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Products</h1>
-            <a href="{{ route('products.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Add Product
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Products</h1>
+            <a href="{{ route('products.create') }}"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg inline-flex items-center transition duration-150 ease-in-out">
+                <i class="fas fa-plus mr-2"></i> Add Product
             </a>
         </div>
 
         @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6"
+                role="alert">
                 {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3"
+                    onclick="this.parentElement.style.display='none'">
+                    <span class="text-green-700">&times;</span>
+                </button>
             </div>
         @endif
 
-        <div class="card">
-
-
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1>Add New Product</h1>
-                    <a href="{{ route('products.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </a>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <form action="{{ route('products.store') }}" method="POST"
-                                    enctype="multipart/form-data">
-                                    @csrf
-
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Product Name *</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" name="name" value="{{ old('name') }}" required>
-                                        @error('name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="type" class="form-label">Product Type *</label>
-                                            <select class="form-control @error('type') is-invalid @enderror"
-                                                id="type" name="type" required>
-                                                <option value="">Select Type</option>
-                                                @if (!isset($productTypes))
-                                                    @php
-                                                        $productTypes = [
-                                                            'tent' => 'Tent',
-                                                            'canvas' => 'Canvas',
-                                                            'accessory' => 'Accessory',
-                                                        ];
-                                                    @endphp
-                                                @endif
-                                                @foreach ($productTypes as $key => $label)
-                                                    <option value="{{ $key }}"
-                                                        {{ old('type') == $key ? 'selected' : '' }}>
-                                                        {{ $label }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            @error('type')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="price" class="form-label">Price (₹) *</label>
-                                            <input type="number" step="0.01"
-                                                class="form-control @error('price') is-invalid @enderror" id="price"
-                                                name="price" value="{{ old('price') }}" required>
-                                            @error('price')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="stock_quantity" class="form-label">Stock Quantity *</label>
-                                            <input type="number"
-                                                class="form-control @error('stock_quantity') is-invalid @enderror"
-                                                id="stock_quantity" name="stock_quantity"
-                                                value="{{ old('stock_quantity', 0) }}" required>
-                                            @error('stock_quantity')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label class="form-label">Status</label>
-                                            <div class="form-check form-switch mt-2">
-                                                <input type="checkbox" class="form-check-input" id="is_active"
-                                                    name="is_active" value="1"
-                                                    {{ old('is_active', true) ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="is_active">
-                                                    Active
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="description" class="form-label">Description *</label>
-                                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                                            rows="4" required>{{ old('description') }}</textarea>
-                                        @error('description')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="specifications" class="form-label">Specifications</label>
-                                        <textarea class="form-control @error('specifications') is-invalid @enderror" id="specifications" name="specifications"
-                                            rows="3">{{ old('specifications') }}</textarea>
-                                        <small class="text-muted">Key specifications separated by commas or
-                                            bullets</small>
-                                        @error('specifications')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="images" class="form-label">Product Images</label>
-                                        <input type="file" class="form-control @error('images') is-invalid @enderror"
-                                            id="images" name="images[]" multiple accept="image/*">
-                                        <small class="text-muted">You can select multiple images</small>
-                                        @error('images')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-save"></i> Save Product
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Product Types</h5>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    @foreach ($productTypes as $key => $label)
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            {{ $label }}
-                                            <span class="badge bg-light text-dark">{{ ucfirst($key) }}</span>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="card mt-3">
-                            <div class="card-header">
-                                <h5 class="mb-0">Quick Tips</h5>
-                            </div>
-                            <div class="card-body">
-                                <ul class="small text-muted mb-0">
-                                    <li>Keep product names clear and descriptive</li>
-                                    <li>For tents: Include capacity (e.g., "2-Person", "Family")</li>
-                                    <li>For canvas: Mention material and dimensions</li>
-                                    <li>Set stock to 0 for out-of-stock items</li>
-                                    <li>Use simple language in descriptions</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-body">
-                @if ($products->count() > 0)
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($products as $product)
-                                  
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            {{-- @if ($product->image) --}}
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            @if ($products->count() > 0)
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    #</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Image</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Name</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Type</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Price</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Stock</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($products as $product)
+                                @php
+                                    // Safely get images as array
+                                    $images = is_array($product->images)
+                                        ? $product->images
+                                        : json_decode($product->images, true) ?? [];
+                                @endphp
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        {{ $loop->iteration }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @foreach ($images as $image)
                                             <img src="{{ asset('uploads/' . $product->image) }}"
-                                                alt="{{ $product->name }}" class="rounded"
-                                                style="width: 60px; height: 60px; object-fit: cover;">
-                                            {{-- @else
-                                                <div class="bg-light rounded d-flex align-items-center justify-content-center"
-                                                    style="width: 60px; height: 60px;">
-                                                    <i class="fas fa-box text-muted"></i>
-                                                </div>
-                                            @endif --}}
-                                        </td>
-                                        <td>
-                                            <strong>{{ $product->name }}</strong>
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info">
-                                                {{ ucfirst($product->type) }}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <strong>{{ $product->formatted_price }}</strong>
-                                        </td>
-                                        <td>
-                                            <span
-                                                class="badge bg-{{ $product->stock_quantity > 0 ? 'success' : 'danger' }}">
-                                                {{ $product->stock_quantity }}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input type="checkbox" class="form-check-input status-toggle"
-                                                    data-id="{{ $product->id }}"
-                                                    {{ $product->is_active ? 'checked' : '' }}>
+                                                alt="{{ $product->name }}"
+                                                class="h-16 w-16 object-cover rounded-lg shadow-sm">
+                                        @endforeach
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">{{ $product->name }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                            {{ ucfirst($product->type) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        {{ $product->formatted_price }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {{ $product->stock_quantity > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                            {{ $product->stock_quantity }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only status-toggle"
+                                                data-id="{{ $product->id }}"
+                                                {{ $product->is_active ? 'checked' : '' }}>
+                                            <div
+                                                class="w-11 h-6 bg-gray-200 rounded-full shadow-inner {{ $product->is_active ? 'bg-green-400' : '' }}">
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group btn-group-sm">
-                                                <a href="{{ route('products.edit', $product) }}"
-                                                    class="btn btn-outline-primary">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <form action="{{ route('products.destroy', $product) }}"
-                                                    method="POST" onsubmit="return confirm('Delete this product?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
+                                            <div
+                                                class="absolute w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ease-in-out {{ $product->is_active ? 'translate-x-6' : 'translate-x-1' }}">
                                             </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                        </label>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <div class="flex space-x-2">
+                                            <a href="{{ route('products.edit', $product) }}"
+                                                class="text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="{{ route('products.destroy', $product) }}" method="POST"
+                                                onsubmit="return confirm('Delete this product?');" class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-red-600 hover:text-red-900 transition duration-150 ease-in-out">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
-                    {{ $products->links() }}
-                @else
-                    <div class="text-center py-5">
-                        <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
-                        <h4>No products found</h4>
-                        <p class="text-muted">Start by adding your first product</p>
-                        <a href="{{ route('products.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Add Product
+                <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                    {{-- {{ $products->links() }} --}}
+                </div>
+            @else
+                <div class="text-center py-12">
+                    <div class="mx-auto h-24 w-24 text-gray-400">
+                        <i class="fas fa-box-open text-6xl"></i>
+                    </div>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">No products found</h3>
+                    <p class="mt-1 text-sm text-gray-500">Start by adding your first product</p>
+                    <div class="mt-6">
+                        <a href="{{ route('products.create') }}"
+                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out">
+                            <i class="fas fa-plus mr-2"></i> Add Product
                         </a>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
         </div>
     </div>
 
-    @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('.status-toggle').change(function() {
-                    const productId = $(this).data('id');
-                    const isActive = $(this).is(':checked');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.status-toggle').forEach(function(toggle) {
+                toggle.addEventListener('change', function() {
+                    const productId = this.dataset.id;
+                    const isActive = this.checked;
 
-                    $.ajax({
-                        url: "{{ route('products.update-status', ':id') }}".replace(':id',
-                            productId),
-                        method: 'POST',
-                        data: {
-                            is_active: isActive ? 1 : 0,
-                            _token: "{{ csrf_token() }}"
-                        },
-                        success: function(response) {
-                            alert(response.message);
-                        },
-                        error: function() {
+                    fetch("{{ route('products.update-status', ':id') }}".replace(':id',
+                            productId), {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                            },
+                            body: JSON.stringify({
+                                is_active: isActive ? 1 : 0
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert(data.message);
+                        })
+                        .catch(error => {
                             alert('Error updating status');
-                            $(this).prop('checked', !isActive);
-                        }
-                    });
+                            this.checked = !isActive;
+                        });
                 });
             });
-        </script>
-    @endpush
+        });
+    </script>
 </x-admin-layout>

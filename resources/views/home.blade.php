@@ -13,7 +13,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="/contact" class="btn-primary px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition duration-300">
+                    <a href="/contact" class="btn-primary px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition duration-300 text-center">
                         <i class="fas fa-calendar-alt mr-2"></i> Learn More
                     </a>
                     <a href="tel:+254701596171" class="btn-outline text-center">

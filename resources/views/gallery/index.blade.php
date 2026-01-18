@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +31,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Header -->
     @include('layouts.navigation')
@@ -54,7 +56,7 @@
                         <h2 class="text-2xl font-bold text-gray-800">Browse Our Work</h2>
                         @php
 
-                        $galleries = \App\Models\Gallery::count();
+                            $galleries = \App\Models\Gallery::count();
                         @endphp
                         <p class="text-gray-600">{{ $galleries }} galleries available</p>
                     </div>
@@ -62,11 +64,9 @@
                     <!-- Search -->
                     <div class="w-full md:w-64">
                         <form method="GET" action="{{ route('gallery.index') }}" class="flex">
-                            <input type="text"
-                                   name="search"
-                                   value="{{ request('search') }}"
-                                   placeholder="Search galleries..."
-                                   class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent">
+                            <input type="text" name="search" value="{{ request('search') }}"
+                                placeholder="Search galleries..."
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-[#2a6b4e] focus:border-transparent">
                             <button type="submit" class="bg-[#2a6b4e] text-white px-4 rounded-r-lg">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -77,15 +77,18 @@
                 <!-- Category Buttons -->
                 <div class="flex flex-wrap gap-2">
                     <a href="{{ route('gallery.index') }}"
-                       class="category-btn px-4 py-2 rounded-full {{ !request('category') ? 'active bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                        class="category-btn px-4 py-2 rounded-full {{ !request('category') ? 'active bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         All Galleries
                     </a>
                     @php
-                        $categories = \App\Models\Gallery::select('category')->distinct()->pluck('category', 'category')->toArray();
+                        $categories = \App\Models\Gallery::select('category')
+                            ->distinct()
+                            ->pluck('category', 'category')
+                            ->toArray();
                     @endphp
-                    @foreach($categories as $key => $label)
+                    @foreach ($categories as $key => $label)
                         <a href="{{ route('gallery.index', ['category' => $key]) }}"
-                           class="category-btn px-4 py-2 rounded-full {{ request('category') == $key ? 'active bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                            class="category-btn px-4 py-2 rounded-full {{ request('category') == $key ? 'active bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                             {{ $label }}
                         </a>
                     @endforeach
@@ -93,7 +96,7 @@
             </div>
 
             <!-- Galleries Grid -->
-<livewire:show-blog />
+            <livewire:show-blog />
         </div>
     </section>
 
@@ -154,4 +157,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -128,12 +128,12 @@
             <x-responsive-nav-link href="about" :active="request()->routeIs('About')">
                 {{ __('About') }}
             </x-responsive-nav-link>
-            {{-- @role('master') --}}
+            @role('master')
 
             <x-responsive-nav-link href="Admin/index" :active="request()->routeIs('Admin/index')">
                 {{ __('Admin') }}
             </x-responsive-nav-link>
-            {{-- @endrole --}}
+            @endrole
         </div>
         <!-- Responsive Settings Options -->
         @auth

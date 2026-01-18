@@ -9,10 +9,11 @@
                 <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 product-card fade-in">
                     <!-- Product Image -->
                     <div class="relative h-48 overflow-hidden">
-                         @foreach ($images as $image)
-                            <img src="{{ Storage::url($product->images[0]) }}" alt="{{ $product->name }}"
+                         {{-- @foreach ($images as $image) --}}
+                            <img src="{{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"
                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                        @endforeach
+                                {{-- {{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"> --}}
+                        {{-- @endforeach --}}
 
                         <!-- Product Type Badge -->
                         <span

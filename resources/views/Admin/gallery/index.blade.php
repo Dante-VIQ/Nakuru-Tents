@@ -1,164 +1,161 @@
 <x-admin-layout>
-    <div class="container-fluid">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Gallery Management</h1>
-            <a href="{{ route('gallery.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Add Gallery
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Gallery Management</h1>
+            <a href="{{ route('gallery.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg inline-flex items-center transition duration-150 ease-in-out">
+                <i class="fas fa-plus mr-2"></i> Add Gallery
             </a>
         </div>
 
         @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
                 {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.style.display='none'">
+                    <span class="text-green-700">&times;</span>
+                </button>
             </div>
         @endif
 
         <!-- Category Filter -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="{{ route('gallery.index') }}"
-                        class="btn btn-sm {{ !request('category') ? 'btn-primary' : 'btn-outline-primary' }}">
-                        All Categories
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <div class="flex flex-wrap gap-2">
+                <a href="{{ route('gallery.index') }}"
+                    class="px-4 py-2 text-sm font-medium rounded-lg {{ !request('category') ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition duration-150 ease-in-out">
+                    All Categories
+                </a>
+                @foreach ($categories as $key => $label)
+                    <a href="{{ route('gallery.index', ['category' => $key]) }}"
+                        class="px-4 py-2 text-sm font-medium rounded-lg {{ request('category') == $key ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition duration-150 ease-in-out">
+                        {{ $label }}
                     </a>
-                    @foreach ($categories as $key => $label)
-                        <a href="{{ route('gallery.index', ['category' => $key]) }}"
-                            class="btn btn-sm {{ request('category') == $key ? 'btn-primary' : 'btn-outline-primary' }}">
-                            {{ $label }}
-                        </a>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-body">
-                @if ($galleries->count() > 0)
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Preview</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Images</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            @if ($galleries->count() > 0)
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Preview</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Images</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($galleries as $gallery)
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $loop->iteration }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if($gallery->images && count($gallery->images) > 0)
+                                            <img src="{{ asset('uploads/' . $gallery->images[0]) }}"
+                                                alt="{{ $gallery->title }}"
+                                                class="h-16 w-16 object-cover rounded-lg shadow-sm">
+                                        @else
+                                            <div class="h-16 w-16 bg-gray-200 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-image text-gray-400"></i>
+                                            </div>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">{{ $gallery->title }}</div>
+                                        @if ($gallery->description)
+                                            <div class="text-sm text-gray-500">{{ Str::limit($gallery->description, 50) }}</div>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                            {{ $gallery->category_label ?? ucfirst($gallery->category) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        {{ count($gallery->images ?? []) }} images
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only status-toggle" data-id="{{ $gallery->id }}" {{ $gallery->is_active ? 'checked' : '' }}>
+                                            <div class="w-11 h-6 bg-gray-200 rounded-full shadow-inner {{ $gallery->is_active ? 'bg-green-400' : '' }}"></div>
+                                            <div class="absolute w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ease-in-out {{ $gallery->is_active ? 'translate-x-6' : 'translate-x-1' }}"></div>
+                                        </label>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <div class="flex space-x-2">
+                                            <a href="{{ route('gallery.show', $gallery->slug) }}" target="_blank"
+                                                class="text-blue-600 hover:text-blue-900 transition duration-150 ease-in-out" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{{ route('gallery.edit', $gallery) }}"
+                                                class="text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="{{ route('gallery.destroy', $gallery) }}" method="POST"
+                                                onsubmit="return confirm('Delete this gallery?');" class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900 transition duration-150 ease-in-out" title="Delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($galleries as $gallery)
-                                    @php
-                                        $categories = \App\Models\Gallery::select('category')
-                                            ->distinct()
-                                            ->pluck('category', 'category')
-                                            ->toArray();
-                                    @endphp
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            @foreach ($gallery->images as $image)
-                                                <div class="relative">
-                                                    <img src="{{ asset('uploads/' . $image) }}"
-                                                        alt="{{ $gallery->title }}"
-                                                        class="w-full h-48 object-cover rounded-lg">
-                                                </div>
-                                            @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
-                                        </td>
-                                        <td>
-                                            <strong>{{ $gallery->title }}</strong>
-                                            @if ($gallery->description)
-                                                <p class="text-muted mb-0 small">
-                                                    {{ Str::limit($gallery->description, 50) }}</p>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info">{{ $gallery->category_label }}</span>
-                                        </td>
-                                        <td>
-                                            <!-- Image Count Badge -->
-                                            {{-- @if (count($images) > 0)
-                                                <span class="badge bg-secondary">{{ count($images) }}
-                                                    images</span>
-                                            @endif --}}
-
-                                        </td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input type="checkbox" class="form-check-input status-toggle"
-                                                    data-id="{{ $gallery->id }}"
-                                                    {{ $gallery->is_active ? 'checked' : '' }}>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group btn-group-sm">
-                                                <a href="{{ route('gallery.show', $gallery->slug) }}" target="_blank"
-                                                    class="btn btn-outline-info" title="View">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="{{ route('gallery.edit', $gallery) }}"
-                                                    class="btn btn-outline-primary" title="Edit">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <form action="{{ route('gallery.destroy', $gallery) }}" method="POST"
-                                                    onsubmit="return confirm('Delete this gallery?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-danger"
-                                                        title="Delete">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-
+                <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
                     {{-- {{ $galleries->links() }} --}}
-                @else
-                    <div class="text-center py-5">
-                        <i class="fas fa-images fa-3x text-muted mb-3"></i>
-                        <h4>No galleries found</h4>
-                        <p class="text-muted">Start by creating your first gallery</p>
-                        <a href="{{ route('gallery.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Create Gallery
+                </div>
+            @else
+                <div class="text-center py-12">
+                    <div class="mx-auto h-24 w-24 text-gray-400">
+                        <i class="fas fa-images text-6xl"></i>
+                    </div>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">No galleries found</h3>
+                    <p class="mt-1 text-sm text-gray-500">Start by creating your first gallery</p>
+                    <div class="mt-6">
+                        <a href="{{ route('gallery.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out">
+                            <i class="fas fa-plus mr-2"></i> Create Gallery
                         </a>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
         </div>
     </div>
 
-    
-        <script>
-            $(document).ready(function() {
-                $('.status-toggle').change(function() {
-                    const galleryId = $(this).data('id');
-                    const isActive = $(this).is(':checked');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.status-toggle').forEach(function(toggle) {
+                toggle.addEventListener('change', function() {
+                    const galleryId = this.dataset.id;
+                    const isActive = this.checked;
 
-                    $.ajax({
-                        url: "{{ route('gallery.update-status', ':id') }}".replace(':id', galleryId),
+                    fetch("{{ route('gallery.update-status', ':id') }}".replace(':id', galleryId), {
                         method: 'POST',
-                        data: {
-                            is_active: isActive ? 1 : 0,
-                            _token: "{{ csrf_token() }}"
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
-                        success: function(response) {
-                            alert('Status updated successfully');
-                        },
-                        error: function() {
-                            alert('Error updating status');
-                            $(this).prop('checked', !isActive);
-                        }
+                        body: JSON.stringify({
+                            is_active: isActive ? 1 : 0
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Status updated successfully');
+                    })
+                    .catch(error => {
+                        alert('Error updating status');
+                        this.checked = !isActive;
                     });
                 });
             });
-        </script>
- 
+        });
+    </script>
 </x-admin-layout>

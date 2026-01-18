@@ -16,13 +16,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
- <!-- Font Awesome -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         * {
@@ -194,6 +197,45 @@
         section {
             scroll-margin-top: 80px;
         }
+
+
+
+        .hero-slider {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            background: rgba(0, 0, 0, 0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 24px;
+            color: white;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: white;
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #3B82F6;
+        }
     </style>
 
     <script>
@@ -214,6 +256,7 @@
             }
         }
     </script>
+
     @livewireStyles
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -250,7 +293,8 @@
                         <span class="text-2xl font-bold">Nakuru Tents & Canvas</span>
                     </div>
                     <p class="text-gray-400 mb-6">
-                        Premium outdoor solutions for events and adventures. Quality tents, hiking gear, and expert event organization.
+                        Premium outdoor solutions for events and adventures. Quality tents, hiking gear, and expert
+                        event organization.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
@@ -288,7 +332,7 @@
                     <p class="text-gray-400 mb-4">Subscribe for outdoor tips and exclusive offers</p>
                     <div class="flex mb-4">
                         <input type="email" placeholder="Your email"
-                               class="flex-grow px-4 py-2 rounded-l-lg text-gray-800">
+                            class="flex-grow px-4 py-2 rounded-l-lg text-gray-800">
                         <button class="bg-primary px-4 rounded-r-lg">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -300,7 +344,7 @@
             <div class="border-t border-gray-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                        &copy; 2026  Nakuru Tents & Canvas. All rights reserved.
+                        &copy; 2026 Nakuru Tents & Canvas. All rights reserved.
                     </p>
                     <div class="flex space-x-6">
                         <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
@@ -314,6 +358,56 @@
 
     @livewireScripts
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroSwiper = new Swiper('.hero-slider', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: {{ !empty($heroImages) && count($heroImages) > 1 ? 'true' : 'false' }},
+                speed: 1000,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+
+                // Navigation arrows
+                navigation: {{ !empty($heroImages) && count($heroImages) > 1
+                    ? `{
+                                                nextEl: '.swiper-button-next',
+                                                prevEl: '.swiper-button-prev',
+                                            }`
+                    : 'false' }},
+
+                // Pagination
+                pagination: {{ !empty($heroImages) && count($heroImages) > 1
+                    ? `{
+                                                el: '.swiper-pagination',
+                                                clickable: true,
+                                                dynamicBullets: true,
+                                            }`
+                    : 'false' }},
+
+                // Only enable autoplay if we have multiple images
+                {{ empty($heroImages) || count($heroImages) <= 1 ? 'autoplay: true,' : '' }}
+            });
+
+            // Pause autoplay on hover (only if we have autoplay)
+            @if (!empty($heroImages) && count($heroImages) > 1)
+                heroSwiper.el.addEventListener('mouseenter', function() {
+                    heroSwiper.autoplay.stop();
+                });
+
+                heroSwiper.el.addEventListener('mouseleave', function() {
+                    heroSwiper.autoplay.start();
+                });
+            @endif
+        });
+    </script>
     <!-- JavaScript -->
     <script>
         // Mobile Menu Toggle
@@ -399,12 +493,16 @@
         // Back to Top Button (optional)
         const backToTopButton = document.createElement('button');
         backToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-        backToTopButton.className = 'fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg z-40 hidden hover:bg-green-700 transition';
+        backToTopButton.className =
+            'fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg z-40 hidden hover:bg-green-700 transition';
         backToTopButton.style.display = 'none';
         document.body.appendChild(backToTopButton);
 
         backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         window.addEventListener('scroll', () => {

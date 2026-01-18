@@ -1,177 +1,225 @@
 <x-admin-layout>
-<div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Add New Product</h1>
-        <a href="{{ route('products.index') }}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Back
-        </a>
-    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Add New Product</h1>
+            <a href="{{ route('products.index') }}" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg inline-flex items-center transition duration-150 ease-in-out">
+                <i class="fas fa-arrow-left mr-2"></i> Back
+            </a>
+        </div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Product Name *</label>
-                            <input type="text" 
-                                   class="form-control @error('name') is-invalid @enderror" 
-                                   id="name" 
-                                   name="name" 
-                                   value="{{ old('name') }}" 
-                                   required>
-                            @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-900">Product Details</h2>
+                    </div>
+                    <div class="p-6">
+                        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="type" class="form-label">Product Type *</label>
-                                <select class="form-control @error('type') is-invalid @enderror" 
-                                        id="type" 
-                                        name="type" 
-                                        required>
-                                    <option value="">Select Type</option>
-                                    @foreach($productTypes as $key => $label)
-                                        <option value="{{ $key }}" 
-                                                {{ old('type') == $key ? 'selected' : '' }}>
-                                            {{ $label }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('type')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label for="price" class="form-label">Price (₹) *</label>
-                                <input type="number" 
-                                       step="0.01" 
-                                       class="form-control @error('price') is-invalid @enderror" 
-                                       id="price" 
-                                       name="price" 
-                                       value="{{ old('price') }}" 
+                            <div class="mb-6">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
+                                <input type="text"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('name') border-red-500 @enderror"
+                                       id="name"
+                                       name="name"
+                                       value="{{ old('name') }}"
                                        required>
-                                @error('price')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @error('name')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="stock_quantity" class="form-label">Stock Quantity *</label>
-                                <input type="number" 
-                                       class="form-control @error('stock_quantity') is-invalid @enderror" 
-                                       id="stock_quantity" 
-                                       name="stock_quantity" 
-                                       value="{{ old('stock_quantity', 0) }}" 
-                                       required>
-                                @error('stock_quantity')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class="form-label">Status</label>
-                                <div class="form-check form-switch mt-2">
-                                    <input type="checkbox" 
-                                           class="form-check-input" 
-                                           id="is_active" 
-                                           name="is_active" 
-                                           value="1" 
-                                           {{ old('is_active', true) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="is_active">
-                                        Active
-                                    </label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="type" class="block text-sm font-medium text-gray-700 mb-2">Product Type *</label>
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('type') border-red-500 @enderror"
+                                            id="type"
+                                            name="type"
+                                            required>
+                                        <option value="">Select Type</option>
+                                        @foreach($productTypes as $key => $label)
+                                            <option value="{{ $key }}"
+                                                    {{ old('type') == $key ? 'selected' : '' }}>
+                                                {{ $label }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('type')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <label for="price" class="block text-sm font-medium text-gray-700 mb-2">Price (₹) *</label>
+                                    <input type="number"
+                                           step="0.01"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('price') border-red-500 @enderror"
+                                           id="price"
+                                           name="price"
+                                           value="{{ old('price') }}"
+                                           required>
+                                    @error('price')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Description *</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" 
-                                      id="description" 
-                                      name="description" 
-                                      rows="4" 
-                                      required>{{ old('description') }}</textarea>
-                            @error('description')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="stock_quantity" class="block text-sm font-medium text-gray-700 mb-2">Stock Quantity *</label>
+                                    <input type="number"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('stock_quantity') border-red-500 @enderror"
+                                           id="stock_quantity"
+                                           name="stock_quantity"
+                                           value="{{ old('stock_quantity', 0) }}"
+                                           required>
+                                    @error('stock_quantity')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
 
-                        <div class="mb-3">
-                            <label for="specifications" class="form-label">Specifications</label>
-                            <textarea class="form-control @error('specifications') is-invalid @enderror" 
-                                      id="specifications" 
-                                      name="specifications" 
-                                      rows="3">{{ old('specifications') }}</textarea>
-                            <small class="text-muted">Key specifications separated by commas or bullets</small>
-                            @error('specifications')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                                    <div class="flex items-center">
+                                        <input type="checkbox"
+                                               class="sr-only"
+                                               id="is_active"
+                                               name="is_active"
+                                               value="1"
+                                               {{ old('is_active', true) ? 'checked' : '' }}>
+                                        <label for="is_active" class="flex items-center cursor-pointer">
+                                            <div class="relative">
+                                                <div class="w-11 h-6 bg-gray-200 rounded-full shadow-inner transition-colors duration-200 {{ old('is_active', true) ? 'bg-green-400' : '' }}"></div>
+                                                <div class="absolute w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 {{ old('is_active', true) ? 'translate-x-6' : 'translate-x-1' }}"></div>
+                                            </div>
+                                            <span class="ml-3 text-sm font-medium text-gray-700">Active</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="images" class="form-label">Product Images</label>
-                            <input type="file" 
-                                   class="form-control @error('images') is-invalid @enderror" 
-                                   id="images" 
-                                   name="images[]" 
-                                   multiple 
-                                   accept="image/*">
-                            <small class="text-muted">You can select multiple images</small>
-                            @error('images')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            <div class="mb-6">
+                                <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('description') border-red-500 @enderror"
+                                          id="description"
+                                          name="description"
+                                          rows="4"
+                                          required>{{ old('description') }}</textarea>
+                                @error('description')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
 
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Save Product
-                            </button>
-                        </div>
-                    </form>
+                            <div class="mb-6">
+                                <label for="specifications" class="block text-sm font-medium text-gray-700 mb-2">Specifications</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('specifications') border-red-500 @enderror"
+                                          id="specifications"
+                                          name="specifications"
+                                          rows="3">{{ old('specifications') }}</textarea>
+                                <p class="mt-1 text-sm text-gray-500">Key specifications separated by commas or bullets</p>
+                                @error('specifications')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="images" class="block text-sm font-medium text-gray-700 mb-2">Product Images</label>
+                                <input type="file"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 @error('images') border-red-500 @enderror"
+                                       id="images"
+                                       name="images[]"
+                                       multiple
+                                       accept="image/*">
+                                <p class="mt-1 text-sm text-gray-500">You can select multiple images</p>
+                                @error('images')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg inline-flex items-center transition duration-150 ease-in-out">
+                                    <i class="fas fa-save mr-2"></i> Save Product
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Product Types</h5>
+
+            <div class="space-y-6">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Product Types</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            @foreach($productTypes as $key => $label)
+                                <li class="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-md">
+                                    <span class="text-sm font-medium text-gray-900">{{ $label }}</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">{{ ucfirst($key) }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        @foreach($productTypes as $key => $label)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $label }}
-                                <span class="badge bg-light text-dark">{{ ucfirst($key) }}</span>
+
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Quick Tips</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-0.5"></i>
+                                Keep product names clear and descriptive
                             </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="card mt-3">
-                <div class="card-header">
-                    <h5 class="mb-0">Quick Tips</h5>
-                </div>
-                <div class="card-body">
-                    <ul class="small text-muted mb-0">
-                        <li>Keep product names clear and descriptive</li>
-                        <li>For tents: Include capacity (e.g., "2-Person", "Family")</li>
-                        <li>For canvas: Mention material and dimensions</li>
-                        <li>Set stock to 0 for out-of-stock items</li>
-                        <li>Use simple language in descriptions</li>
-                    </ul>
+                            <li class="flex items-start">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-0.5"></i>
+                                For tents: Include capacity (e.g., "2-Person", "Family")
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-0.5"></i>
+                                For canvas: Mention material and dimensions
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-0.5"></i>
+                                Set stock to 0 for out-of-stock items
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-0.5"></i>
+                                Use simple language in descriptions
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('is_active');
+            const toggleLabel = toggle.nextElementSibling;
+            const toggleBg = toggleLabel.querySelector('.relative > div:first-child');
+            const toggleBtn = toggleLabel.querySelector('.absolute');
+
+            function updateToggle() {
+                if (toggle.checked) {
+                    toggleBg.classList.add('bg-green-400');
+                    toggleBg.classList.remove('bg-gray-200');
+                    toggleBtn.classList.add('translate-x-6');
+                    toggleBtn.classList.remove('translate-x-1');
+                } else {
+                    toggleBg.classList.remove('bg-green-400');
+                    toggleBg.classList.add('bg-gray-200');
+                    toggleBtn.classList.remove('translate-x-6');
+                    toggleBtn.classList.add('translate-x-1');
+                }
+            }
+
+            toggle.addEventListener('change', updateToggle);
+            updateToggle(); // Initial state
+        });
+    </script>
 </x-admin-layout>

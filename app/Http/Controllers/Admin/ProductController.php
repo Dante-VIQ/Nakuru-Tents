@@ -13,8 +13,15 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::latest()->paginate(10)->map(function ($product) {
+                // Decode JSON if not already decoded
+                if (is_string($product->images)) {
+                    $product->images = json_decode($product->images, true) ?? [];
+                }
+                return $product;
+            });
         return view('admin.products.index', compact('products'));
+
     }
 
     public function create()
