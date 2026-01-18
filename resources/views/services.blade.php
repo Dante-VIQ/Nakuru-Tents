@@ -1,6 +1,5 @@
 <x-app-layout>
     <!-- Header -->
-@include('layouts.navigation')
 
 
     <!-- Hero Section -->
