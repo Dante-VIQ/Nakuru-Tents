@@ -888,8 +888,8 @@
         let currentLayer = 'streets';
         
         // Business Coordinates (Example: Denver, Colorado)
-        const businessLat = -0.293883;
-        const businessLng = 36.117146;
+        const businessLat = -0.293200;
+        const businessLng = 36.117200;
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
