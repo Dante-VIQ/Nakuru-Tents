@@ -64,7 +64,8 @@
             }
         }
 
-        @livewireStyles < !-- Scripts -->@vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles 
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </style>
 </head>
 
@@ -128,7 +129,7 @@
                         All Products
                     </a>
                     @foreach (['tent' => 'Tents', 'canvas' => 'Canvas Products', 'accessory' => 'Accessories', 'service' => 'Services'] as $type => $label)
-                        <a href="{{ route('products', ['type' => $type]) }}"
+                        <a href="{{ route('rent', ['type' => $type]) }}"
                             class="inline-flex items-center px-4 py-2 rounded-full {{ request('type') == $type ? 'bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                             {{ $label }}
                         </a>
