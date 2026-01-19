@@ -11,12 +11,14 @@
                     <a href="#" class="text-2xl font-bold text-primary"></a>
                 </div> --}}
                 <div class="flex items-center space-x-3">
-                    <div class="bg-blue-700 text-white w-12 h-12 rounded-lg flex items-center justify-center">
-                        {{-- <img src="{{ asset('images/ride-logo.PNG') }}" alt="Logo" class="block h-12 w-auto" /> --}}
-                        <i class="fas fa-mountain-sun text-white text-xl"></i>
+                    <div class="bg-blue-700 text-white w-14 h-14 rounded-lg flex items-center justify-center">
+                        <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="block h-12 w-auto" />
+                            {{-- <img class="w-auto h-auto" src="{{ asset('images/logo1.png') }}" alt="Nakuru Tents & Canvas Logo"> --}}
+
+                        {{-- <i class="fas fa-mountain-sun text-white text-xl"></i> --}}
                     </div>
                     <div>
-                        <h1 class="font-heading lg:text-2xl text-lg font-bold text-teal-900">Nakuru Tents & Canvas</h1>
+                        <h1 class="font-heading lg:text-2xl text-md font-bold text-teal-900">Nakuru Tents & Canvas</h1>
                         <p class="text-sm text-gray-600">Professional Outdoor Adventures</p>
                     </div>
                 </div>

@@ -55,12 +55,12 @@
                     </div>
 
                     <!-- Floating Elements -->
-                    <div class="absolute -top-6 -right-6 bg-secondary text-primary p-6 rounded-2xl shadow-xl">
+                    <div class="absolute -top-6 -right-6 bg-secondary text-primary p-4 rounded-2xl shadow-xl">
                         <div class="text-3xl font-bold">20% Off</div>
                         <div class="text-sm">First Event Booking</div>
                     </div>
 
-                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-200">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-200">
                         <div class="flex items-center space-x-4">
                             <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
                                 <i class="fas fa-shield-alt text-white text-xl"></i>

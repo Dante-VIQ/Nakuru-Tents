@@ -288,7 +288,8 @@
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
                         <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <i class="fas fa-mountain-sun text-white"></i>
+                            {{-- <i class="fas fa-mountain-sun text-white"></i> --}}
+                            <img class="w-full h-full rounded-lg" src="{{ asset('images/logo1.png') }}" alt="Nakuru Tents & Canvas Logo">
                         </div>
                         <span class="text-2xl font-bold">Nakuru Tents & Canvas</span>
                     </div>

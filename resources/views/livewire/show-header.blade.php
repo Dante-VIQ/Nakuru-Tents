@@ -23,21 +23,21 @@
                                             <span class="inline-block px-4 py-2 bg-blue-600 rounded-full text-sm font-semibold mb-4">
                                                 {{ ucfirst($image['type'] ?? 'Featured') }}
                                             </span>
-                                            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                                            <h1 class="text-2xl md:text-4xl font-bold mb-4 leading-tight">
                                                 {{ $image['title'] ?? 'Featured Image' }}
                                             </h1>
-                                            @isset($image['description'])
+                                            {{-- @isset($image['description'])
                                                 <p class="text-xl mb-8 opacity-90">
                                                     {{ Str::limit($image['description'], 150) }}
                                                 </p>
-                                            @endisset
-                                            @isset($image['link'])
+                                            @endisset --}}
+                                            {{-- @isset($image['link'])
                                                 <a href="{{ $image['link'] }}" 
                                                    class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
                                                     View Details
                                                     <i class="fas fa-arrow-right ml-2"></i>
                                                 </a>
-                                            @endisset
+                                            @endisset --}}
                                         </div>
                                     </div>
                                 </div>
@@ -69,10 +69,10 @@
             </div>
             
             <!-- Navigation Buttons (only show if we have images) -->
-            @if(!empty($heroImages) && count($heroImages) > 1)
+            {{-- @if(!empty($heroImages) && count($heroImages) > 1)
                 <div class="swiper-button-next text-white"></div>
                 <div class="swiper-button-prev text-white"></div>
-            @endif
+            @endif --}}
             
             <!-- Pagination Dots (only show if we have images) -->
             @if(!empty($heroImages) && count($heroImages) > 1)
