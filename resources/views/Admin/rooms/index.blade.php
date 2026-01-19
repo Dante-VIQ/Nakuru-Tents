@@ -123,12 +123,12 @@
 
                 <!-- Category Filters -->
                 <div class="flex overflow-x-auto gap-2 pb-4">
-                    <a href="{{ route('products.index') }}"
+                    <a href="{{ route('products') }}"
                         class="inline-flex items-center px-4 py-2 rounded-full {{ !request('type') ? 'bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                         All Products
                     </a>
                     @foreach (['tent' => 'Tents', 'canvas' => 'Canvas Products', 'accessory' => 'Accessories', 'service' => 'Services'] as $type => $label)
-                        <a href="{{ route('products.index', ['type' => $type]) }}"
+                        <a href="{{ route('products', ['type' => $type]) }}"
                             class="inline-flex items-center px-4 py-2 rounded-full {{ request('type') == $type ? 'bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                             {{ $label }}
                         </a>

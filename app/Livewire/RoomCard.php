@@ -13,7 +13,7 @@ class RoomCard extends Component
     {
         // $this->products = Product::all();
 
-                $this->products =  Product::where('is_active', true)
+        $this->products =  Product::where('is_active', true)
             ->latest()
             ->get()
             ->map(function ($product) {

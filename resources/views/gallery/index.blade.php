@@ -87,7 +87,7 @@
                             ->toArray();
                     @endphp
                     @foreach ($categories as $key => $label)
-                        <a href="{{ route('gallery.index', ['category' => $key]) }}"
+                        <a href="{{ route('gallery', ['category' => $key]) }}"
                             class="category-btn px-4 py-2 rounded-full {{ request('category') == $key ? 'active bg-[#2a6b4e] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                             {{ $label }}
                         </a>

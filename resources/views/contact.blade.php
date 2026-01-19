@@ -141,8 +141,9 @@
             border-radius: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             z-index: 1;
-                height: 400px; /* or whatever height you want */
-    width: 100%;
+            height: 400px;
+            /* or whatever height you want */
+            width: 100%;
         }
 
         .leaflet-container {
@@ -422,7 +423,7 @@
             <div class="grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 fade-in">
                     <!-- Interactive Map -->
-                    <div id="map" class="rounded-lg shadow-lg"></div
+                    <div id="map" class="w-full"></div>
 
                     <!-- Map Controls -->
                     <div class="flex flex-wrap gap-3 mt-4">
