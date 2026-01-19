@@ -41,7 +41,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'stock_quantity' => 'required|integer|min:0',
             'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:51200',
             'is_active' => 'boolean',
         ]);
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'stock_quantity' => 'required|integer|min:0',
             'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:51200',
             'is_active' => 'boolean',
         ]);
 
@@ -97,11 +97,11 @@ class ProductController extends Controller
         // Handle image uploads
         if ($request->hasFile('images')) {
             // Delete old images
-            if ($product->images) {
-                foreach ($product->images as $oldImage) {
-                    Storage::disk('public_direct')->delete($oldImage);
-                }
-            }
+            // if ($product->images) {
+            //     foreach ($product->images as $oldImage) {
+            //         Storage::disk('public_direct')->delete($oldImage);
+            //     }
+            // }
 
             foreach ($request->file('images') as $image) {
                 $path = $image->store('products', 'public_direct');

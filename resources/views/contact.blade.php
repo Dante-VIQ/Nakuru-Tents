@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Adventure Canvas Co.</title>
+    <title>Contact Us - Nakuru Tents & Canvas</title>
     <meta name="description"
-        content="Get in touch with Adventure Canvas Co. for event tents, hiking gear, and outdoor equipment inquiries.">
+        content="Get in touch with Nakuru Tents & Canvas for event tents, hiking gear, and outdoor equipment inquiries.">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Leaflet CSS for Map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> --}}
+
+    <!-- Add these in your <head> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
     <!-- Custom Styles -->
     <style>
@@ -137,6 +141,8 @@
             border-radius: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             z-index: 1;
+                height: 400px; /* or whatever height you want */
+    width: 100%;
         }
 
         .leaflet-container {
@@ -416,7 +422,7 @@
             <div class="grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 fade-in">
                     <!-- Interactive Map -->
-                    <div id="map" class="w-full"></div>
+                    <div id="map" class="rounded-lg shadow-lg"></div
 
                     <!-- Map Controls -->
                     <div class="flex flex-wrap gap-3 mt-4">
@@ -714,7 +720,7 @@
                                 </div>
                                 <div class="pt-4 border-t border-white/20">
                                     <p class="text-sm text-white/80">For urgent matters outside business hours, call
-                                        our emergency line: <span class="font-bold">(555) 987-6543</span></p>
+                                        our emergency line: <span class="font-bold">+254 701 596171</span></p>
                                 </div>
                             </div>
                         </div>
@@ -978,10 +984,11 @@
         </div>
     </footer>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
     @livewireScripts
+    <!-- Leaflet JS -->
+    {{-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> --}}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- JavaScript -->
     <script>
         // Map Variables
@@ -1148,10 +1155,10 @@
                 });
 
                 L.tileLayer(
-                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                    attribution: 'Tiles © Esri',
-                    maxZoom: 19,
-                }).addTo(map);
+                    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                        attribution: 'Tiles © Esri',
+                        maxZoom: 19,
+                    }).addTo(map);
 
                 currentLayer = 'satellite';
                 animateButton('showSatelliteView');
@@ -1353,7 +1360,7 @@
         }
 
         function emailUs() {
-            window.location.href = 'mailto:info@adventurecanvas.com?subject=Inquiry%20from%20Website';
+            window.location.href = 'mailto:nakurucanvastents@gmail.com?subject=Inquiry%20from%20Website';
         }
 
         function getDirections() {

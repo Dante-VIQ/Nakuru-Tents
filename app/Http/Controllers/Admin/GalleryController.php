@@ -40,7 +40,7 @@ class GalleryController extends Controller
             'category' => 'required|in:tents,events,camping,projects,custom,team',
             'description' => 'nullable|string',
             'images' => 'required|array|min:1',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:51200',
             'is_active' => 'boolean',
         ]);
 
@@ -81,7 +81,7 @@ class GalleryController extends Controller
             'category' => 'required|in:tents,events,camping,projects,custom,team',
             'description' => 'nullable|string',
             'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:51200',
             'is_active' => 'boolean',
         ]);
 

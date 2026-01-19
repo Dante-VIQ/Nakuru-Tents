@@ -25,16 +25,24 @@
                 <div class="md:hidden p-4 space-y-4">
                     @foreach ($products as $product)
                         @php
-                            $images = is_array($product->images) ? $product->images : json_decode($product->images, true) ?? [];
+                            // Convert JSON string to array if needed
+                            $imagesArray = is_string($product->images)
+                                ? json_decode($product->images, true)
+                                : $product->images;
+
+                            // Or for comma-separated string:
+                            // $imagesArray = is_string($product->images) ? explode(',', $product->images) : $product->images;
+
                         @endphp
                         <div class="flex items-start space-x-4 p-3 bg-gray-50 rounded-lg">
                             <div class="flex-shrink-0">
-                         @foreach ($images as $image)
-                            <img src="{{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                {{-- {{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"> --}}
-                        @endforeach
-
+                                @if (is_array($imagesArray) && count($imagesArray) > 0)
+                                    @foreach ($imagesArray as $image)
+                                        <img src="{{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"
+                                            class="h-20 w-20 object-cover rounded-md shadow-sm">
+                                        {{-- {{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"> --}}
+                                    @endforeach
+                                @endif
                             </div>
                             <div class="flex-1">
                                 <div class="flex items-start justify-between">
@@ -66,9 +74,9 @@
                                             </label>
                                         </div>
                                         <div class="flex justify-end space-x-2">
-                                            {{-- <a href="{{ route('products.edit', $product) }}"
+                                            <a href="{{ route('products.edit', $product) }}"
                                                 class="text-indigo-600 hover:text-indigo-900 text-sm" title="Edit"><i
-                                                    class="fas fa-edit"></i></a> --}}
+                                                    class="fas fa-edit"></i></a>
                                             <form action="{{ route('products.destroy', $product) }}" method="POST"
                                                 onsubmit="return confirm('Delete this product?');" class="inline">
                                                 @csrf
