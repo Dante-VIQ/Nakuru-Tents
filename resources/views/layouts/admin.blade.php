@@ -81,7 +81,7 @@
 </head>
 <body class="bg-gray-100">
     <!-- Admin Navigation -->
-    <nav class="bg-white shadow-lg">
+    <nav class="pl-4 sm:pl-12 bg-white shadow-lg">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-3">
@@ -89,7 +89,7 @@
                         <i class="fas fa-mountain-sun text-white"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-800">Nakuru Tents & Canvas</h1>
+                        <h1 class="text-xl  font-bold text-gray-800">Nakuru Tents & Canvas</h1>
                         <p class="text-sm text-gray-500">Admin Panel</p>
                     </div>
                 </div>
@@ -98,73 +98,23 @@
                     <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-[#2a6b4e]" target="_blank">
                         <i class="fas fa-external-link-alt mr-1"></i> View Site
                     </a>
-                    <form method="POST" action="{{ route('logout') }}">
+                    {{-- <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn-secondary">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="flex">
+    <div class="min-h-screen flex">
         <!-- Sidebar -->
-        <div class="w-64 bg-white shadow-lg h-screen sticky top-0">
-            <div class="flex-col p-6">
-                <h2 class="text-lg font-bold text-gray-800 mb-6">Navigation</h2>
-
-                <div class="flex flex-col space-y-4">
-                    <a href="{{ route('dashboard') }}" class="sidebar-link space-x-4 {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-
-                    <a href="{{ route('products.index') }}" class="sidebar-link space-x-4 {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
-                        <i class="fas fa-campground"></i>
-                        <span>Products</span>
-                    </a>
-
-                    <a href="{{ route('gallery.index') }}" class="sidebar-link space-x-4">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Gallery</span>
-                    </a>
-
-                    {{-- <a href="{{ route('booknow') }}" class="sidebar-link space-x-4">
-                        <i class="fas fa-users"></i>
-                        <span>Bookings</span>
-                    </a> --}}
-
-                    {{-- <a href="{{ route('admin.inquiries.index') }}" class="sidebar-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>Inquiries</span>
-                    </a>
-
-                    <a href="{{ route('admin.settings') }}" class="sidebar-link">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
-                    </a> --}}
-                </div>
-
-                <div class="mt-8 pt-8 border-t border-gray-200">
-                    <h3 class="text-sm font-bold text-gray-500 uppercase mb-4">Quick Stats</h3>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="text-sm text-gray-600">Total Products</p>
-                            <p class="text-lg font-bold text-[#2a6b4e]">{{ \App\Models\Product::count() }}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Active Products</p>
-                            <p class="text-lg font-bold text-[#2a6b4e]">{{ \App\Models\Product::where('is_active', true)->count() }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-nav-layout />
 
         <!-- Main Content -->
-        <div class="flex-1 p-8">
+        <div class="flex-1 p-6 md:p-8 pl-16 md:pl-0">
             @if(session('success'))
                 <div class="mb-6 bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
                     <div class="flex items-center">

@@ -24,13 +24,13 @@ class GalleryController extends Controller
             });
         $categories = Gallery::getCategories();
 
-        return view('admin.gallery.index', compact('galleries', 'categories'));
+        return view('Admin.gallery.index', compact('galleries', 'categories'));
     }
 
     public function create()
     {
         $categories = Gallery::getCategories();
-        return view('admin.gallery.create', compact('categories'));
+        return view('Admin.gallery.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -64,10 +64,14 @@ class GalleryController extends Controller
         return redirect()->route('gallery.index')->with('success', 'Gallery created successfully.');
     }
 
-    public function edit(Gallery $gallery)
+    public function edit($id)
     {
+        $gallery = Gallery::findOrFail($id);
         $categories = Gallery::getCategories();
-        return view('admin.gallery.edit', compact('gallery', 'categories'));
+        // Load gallery images - adjust based on your relationship
+        $galleries = $gallery->images; // or GalleryImage::where('gallery_id', $id)->get();
+
+        return view('Admin.gallery.edit', compact('gallery', 'galleries', 'categories'));
     }
 
     public function update(Request $request, Gallery $gallery)
@@ -89,11 +93,11 @@ class GalleryController extends Controller
         // Handle new image uploads
         if ($request->hasFile('images')) {
             // Delete old images
-            if ($gallery->images) {
-                foreach ($gallery->images as $oldImage) {
-                    Storage::disk('public_direct')->delete($oldImage);
-                }
-            }
+            // if ($gallery->images) {
+            //     foreach ($gallery->images as $oldImage) {
+            //         Storage::disk('public_direct')->delete($oldImage);
+            //     }
+            // }
 
             // Upload new images
             $imagePaths = [];
@@ -118,11 +122,11 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
         // Delete associated images
-        if ($gallery->images) {
-            foreach ($gallery->images as $image) {
-                Storage::disk('public')->delete($image);
-            }
-        }
+        // if ($gallery->images) {
+        //     foreach ($gallery->images as $image) {
+        //         Storage::disk('public')->delete($image);
+        //     }
+        // }
 
         $gallery->delete();
 

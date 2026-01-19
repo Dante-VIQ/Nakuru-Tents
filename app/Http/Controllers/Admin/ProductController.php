@@ -13,21 +13,22 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(10)->map(function ($product) {
+        $products = Product::latest()
+            ->paginate(10)
+            ->map(function ($product) {
                 // Decode JSON if not already decoded
                 if (is_string($product->images)) {
                     $product->images = json_decode($product->images, true) ?? [];
                 }
                 return $product;
             });
-        return view('admin.products.index', compact('products'));
-
+        return view('Admin.products.index', compact('products'));
     }
 
     public function create()
     {
         $productTypes = Product::getTypes();
-        return view('admin.products.create', compact('productTypes'));
+        return view('Admin.products.create', compact('productTypes'));
     }
 
     public function store(Request $request)
@@ -41,7 +42,7 @@ class ProductController extends Controller
             'stock_quantity' => 'required|integer|min:0',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'is_active' => 'boolean'
+            'is_active' => 'boolean',
         ]);
 
         // Generate slug
@@ -52,7 +53,7 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $path = $image->store('products', 'public_direct');
-                            $relativePath = str_replace('uploads/', '', $path);
+                $relativePath = str_replace('uploads/', '', $path);
                 $imagePaths[] = $relativePath;
             }
             $validated['images'] = json_encode($imagePaths);
@@ -64,14 +65,13 @@ class ProductController extends Controller
         // Create product
         Product::create($validated);
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     public function edit(Product $product)
     {
         $productTypes = Product::getTypes();
-        return view('admin.products.edit', compact('product', 'productTypes'));
+        return view('Admin.products.edit', compact('product', 'productTypes'));
     }
 
     public function update(Request $request, Product $product)
@@ -85,7 +85,7 @@ class ProductController extends Controller
             'stock_quantity' => 'required|integer|min:0',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'is_active' => 'boolean'
+            'is_active' => 'boolean',
         ]);
 
         // Update slug if name changed
@@ -93,6 +93,7 @@ class ProductController extends Controller
             $validated['slug'] = Str::slug($validated['name'] . '-' . time());
         }
 
+        $imagePaths = [];
         // Handle image uploads
         if ($request->hasFile('images')) {
             // Delete old images
@@ -101,15 +102,13 @@ class ProductController extends Controller
                     Storage::disk('public_direct')->delete($oldImage);
                 }
             }
-            
-            // Upload new images
+
             foreach ($request->file('images') as $image) {
-                $imagePaths = [];
                 $path = $image->store('products', 'public_direct');
-                              $relativePath = str_replace('uploads/', '', $path);
+                $relativePath = str_replace('uploads/', '', $path);
                 $imagePaths[] = $relativePath;
             }
-             $validated['images'] = json_encode($imagePaths);
+            $validated['images'] = json_encode($imagePaths);
         } else {
             // Keep existing images if no new ones uploaded
             $validated['images'] = $product->images;
@@ -121,36 +120,34 @@ class ProductController extends Controller
         // Update product
         $product->update($validated);
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully.');
+        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
     public function destroy(Product $product)
     {
         // Delete associated images
-        if ($product->images) {
-            foreach ($product->images as $image) {
-                Storage::disk('public')->delete($image);
-            }
-        }
+        // if ($product->images) {
+        //     foreach ($product->images as $image) {
+        //         Storage::disk('public_direct')->delete($image);
+        //     }
+        // }
 
         $product->delete();
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 
     public function updateStatus(Request $request, Product $product)
     {
         $request->validate([
-            'is_active' => 'required|boolean'
+            'is_active' => 'required|boolean',
         ]);
 
         $product->update(['is_active' => $request->is_active]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Status updated successfully.'
+            'message' => 'Status updated successfully.',
         ]);
     }
 }

@@ -21,7 +21,71 @@
 
         <div class="bg-white shadow-lg rounded-lg overflow-hidden">
             @if ($products->count() > 0)
-                <div class="overflow-x-auto">
+                <!-- Mobile: stacked card list -->
+                <div class="md:hidden p-4 space-y-4">
+                    @foreach ($products as $product)
+                        @php
+                            $images = is_array($product->images) ? $product->images : json_decode($product->images, true) ?? [];
+                        @endphp
+                        <div class="flex items-start space-x-4 p-3 bg-gray-50 rounded-lg">
+                            <div class="flex-shrink-0">
+                         @foreach ($images as $image)
+                            <img src="{{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"
+                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                {{-- {{ asset('uploads/' . $image) }}" alt="{{ $product->name }}"> --}}
+                        @endforeach
+
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-900">{{ $product->name }}</h3>
+                                        <div class="mt-1 text-xs text-gray-600">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">{{ ucfirst($product->type) }}</span>
+                                            <span
+                                                class="ml-2 font-semibold text-gray-900">{{ $product->formatted_price }}</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            <span
+                                                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {{ $product->stock_quantity > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">{{ $product->stock_quantity }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right space-y-2">
+                                        <div>
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" class="sr-only status-toggle"
+                                                    data-id="{{ $product->id }}"
+                                                    {{ $product->is_active ? 'checked' : '' }}>
+                                                <div
+                                                    class="w-11 h-6 bg-gray-200 rounded-full shadow-inner {{ $product->is_active ? 'bg-green-400' : '' }}">
+                                                </div>
+                                                <div
+                                                    class="absolute w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ease-in-out {{ $product->is_active ? 'translate-x-6' : 'translate-x-1' }}">
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="flex justify-end space-x-2">
+                                            {{-- <a href="{{ route('products.edit', $product) }}"
+                                                class="text-indigo-600 hover:text-indigo-900 text-sm" title="Edit"><i
+                                                    class="fas fa-edit"></i></a> --}}
+                                            <form action="{{ route('products.destroy', $product) }}" method="POST"
+                                                onsubmit="return confirm('Delete this product?');" class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900 text-sm"
+                                                    title="Delete"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Desktop/tablet: table view -->
+                <div class="hidden md:block overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>

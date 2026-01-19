@@ -128,7 +128,7 @@
             <x-responsive-nav-link href="about" :active="request()->routeIs('About')">
                 {{ __('About') }}
             </x-responsive-nav-link>
-            @role('master')
+           @role('master|engineer')
 
             <x-responsive-nav-link href="Admin/index" :active="request()->routeIs('Admin/index')">
                 {{ __('Admin') }}
